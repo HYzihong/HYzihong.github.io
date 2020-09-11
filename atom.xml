@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hy——blog</title>
+  
+  
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-09-10T06:45:29.880Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Hy</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Javascript  基础</title>
+    <link href="http://yoursite.com/2020/08/13/Javascript-%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2020/08/13/Javascript-%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-08-13T06:51:40.000Z</published>
+    <updated>2020-09-10T06:45:29.880Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="JavaScript-基础知识"><a href="#JavaScript-基础知识" class="headerlink" title="JavaScript 基础知识"></a>JavaScript 基础知识</h1><h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><h5 id="JS基础"><a href="#JS基础" class="headerlink" title="JS基础"></a>JS基础</h5><ul><li>基本语法</li><li>语句</li><li>对象</li><li>函数</li></ul><h5 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h5><h5 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h5><h5 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h5><h5 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h5><h5 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h5><h5 id="最新语法"><a href="#最新语法" class="headerlink" title="最新语法"></a>最新语法</h5><hr><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul><li><p>变量</p><ul><li>变量声明</li><li>变量作用域</li><li>全局变量</li></ul></li><li><p>类型</p><ul><li>基本类型</li><li>引用类型</li><li>判断类型的方法</li><li>类型转换<ul><li>显式转换</li><li>隐式转换</li></ul></li></ul></li><li><p>运算符</p><ul><li>分类</li><li>优先级</li></ul></li></ul><hr><h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><ol><li><p>变量声明</p><ul><li><p>var 有变量提升，可以跨块访问，不能跨函数访问</p></li><li><p>let 只能在块级作用域访问，不存在变量提升，存在暂时性死区，不允许重复声明</p></li><li><p>const 只能在块级作用域访问，用于定义常量,不存在变量提升,必须初始化（赋值），声明的值不会改变（内存地址不会改变），存在暂时性死区</p><blockquote><p>补充：对象不可变则使用 <code>Object.freeze()</code> 方法</p></blockquote></li></ul></li><li><p>变量作用域</p><ul><li><p>函数作用域</p></li><li><p>全局作用域</p></li><li><p>块级作用域</p></li></ul></li><li><p>全局变量</p><ul><li>window</li></ul></li></ol><h5 id=""><a href="#" class="headerlink" title=""></a></h5><ol><li><p>基本类型</p><ul><li>number 2^64 - 2^53 + 3个值(正无穷（Infinity）、负无穷（-Infinity）、NaN（非数字值的特殊值为NaN值，任意两个NaN不相等）)</li><li>string 最大长度是2^53 - 1</li><li>boolean</li><li>null 语义表示空值（定义了但是为空）</li><li>undefined 表示未定义，类型只有一个值<blockquote><p>1.null表示“没有对象”，即该处不应该有值。典型用法是：<br>  1）作为函数的参数，表示该函数的参数不是对象<br>  2）作为对象原型链的终点<br>2.undefined表示“缺少值”，就是此处应该有一个值，但是还没有定义。典型用法是：<br>  1）变量被声明了，但没有赋值时，就等于undefined<br>  2）调用函数时，应该提供的参数没有提供，该参数等于undefined<br>  3）对象没有赋值的属性，该属性的值为undefined<br>  4）函数没有返回值时，默认返回undefined</p></blockquote></li></ul></li></ol><p>转换为数字是，null转换为0，undefined转换为NaN<br>    - Symbol ES6 引入了一种新的原始数据类型Symbol，表示独一无二的值。<br>        &gt; 1.特点<br>        &gt;（1）Symbol可以具有字符串类型的描述，即使描述相同，Symbol也不相等。<br>        &gt;（2）Symbol作为属性名，该属性不会出现在for……in、for……of循环中，也不会被Object.keys()、Object.getOwnPropertyNames（）返回。有一个Object.getOwnPropertySymbols方法可以获取到。<br>        &gt;2.使用<br>        &gt;var mySymbol = Symbol(“my symbol”);// 即使key一样，产生的也不同<br>        &gt;var s1 = Symbol.for(‘foo’);// 不会每次调用时都返回一个新的Symbol类型的值，而是会首先检查给定的key是否已经存在，如果不存在才会新建一个值。<br>        &gt;Symbol.keyFor(s1);// 返回一个已登记Symbol类型值的key。</p><p>利用typeof进行检测，但null是特例，会返回Object，这是因为js在底层存储变量的时候会在变量的机器码的低位1-3位存储其类型信息（000：对象；010：浮点数；100：字符串；110：布尔；1：整数；但是存在两个特殊的：null所有机器码均为0；undefined：用 −2^30 整数来表示），所以null返回Object</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;JavaScript-基础知识&quot;&gt;&lt;a href=&quot;#JavaScript-基础知识&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 基础知识&quot;&gt;&lt;/a&gt;JavaScript 基础知识&lt;/h1&gt;&lt;h2 id=&quot;基本结构&quot;&gt;&lt;a href</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Javascript 面试题基础</title>
+    <link href="http://yoursite.com/2020/08/12/Javascript-%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2020/08/12/Javascript-%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-08-12T08:37:06.000Z</published>
+    <updated>2020-08-13T07:02:54.229Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="js面试题-基础部分"><a href="#js面试题-基础部分" class="headerlink" title="js面试题_基础部分"></a>js面试题_基础部分</h1><h5 id="JS中使用-typeof-能得到的哪些类型-？"><a href="#JS中使用-typeof-能得到的哪些类型-？" class="headerlink" title="JS中使用 typeof 能得到的哪些类型   ？"></a>JS中使用 <code>typeof</code> 能得到的哪些类型   ？</h5><ul><li>答：function、string、object、number</li></ul><hr><h5 id="何时使用-，何时使用"><a href="#何时使用-，何时使用" class="headerlink" title="何时使用==，何时使用 ===  ?"></a>何时使用<code>==</code>，何时使用 <code>===</code>  ?</h5><ul><li>答：</li></ul><hr><h5 id="JS中有哪些内置函数"><a href="#JS中有哪些内置函数" class="headerlink" title="JS中有哪些内置函数"></a>JS中有哪些内置函数</h5><ul><li>答：</li></ul><hr><h5 id="JS变量按照存储方式区分为哪些类型，并描述其特点"><a href="#JS变量按照存储方式区分为哪些类型，并描述其特点" class="headerlink" title="JS变量按照存储方式区分为哪些类型，并描述其特点"></a>JS变量按照存储方式区分为哪些类型，并描述其特点</h5><ul><li>答：</li></ul><hr><h5 id="如何理解JSON"><a href="#如何理解JSON" class="headerlink" title="如何理解JSON"></a>如何理解JSON</h5><ul><li>答：</li></ul><hr><h5 id="window-onload-和-DOMContentLoaded-的区别-？"><a href="#window-onload-和-DOMContentLoaded-的区别-？" class="headerlink" title="window.onload 和 DOMContentLoaded 的区别 ？"></a><code>window.onload</code> 和 <code>DOMContentLoaded</code> 的区别 ？</h5><ul><li>答：</li></ul><hr><h5 id="用JS创建10个-lt-a-gt-标签，点击的时候弹出对应的序号。"><a href="#用JS创建10个-lt-a-gt-标签，点击的时候弹出对应的序号。" class="headerlink" title="用JS创建10个&lt;a&gt;标签，点击的时候弹出对应的序号。"></a>用JS创建10个<code>&lt;a&gt;</code>标签，点击的时候弹出对应的序号。</h5><ul><li>答：</li></ul><hr><h5 id="简述如何实现一个模块加载器，实现类似require-js的基本功能"><a href="#简述如何实现一个模块加载器，实现类似require-js的基本功能" class="headerlink" title="简述如何实现一个模块加载器，实现类似require.js的基本功能"></a>简述如何实现一个<strong>模块加载器</strong>，实现类似<code>require.js</code>的基本功能</h5><hr><h5 id="实现数组的随机排序"><a href="#实现数组的随机排序" class="headerlink" title="实现数组的随机排序"></a>实现数组的随机排序</h5>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;js面试题-基础部分&quot;&gt;&lt;a href=&quot;#js面试题-基础部分&quot; class=&quot;headerlink&quot; title=&quot;js面试题_基础部分&quot;&gt;&lt;/a&gt;js面试题_基础部分&lt;/h1&gt;&lt;h5 id=&quot;JS中使用-typeof-能得到的哪些类型-？&quot;&gt;&lt;a href=</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/08/12/hello-world/"/>
+    <id>http://yoursite.com/2020/08/12/hello-world/</id>
+    <published>2020-08-12T08:28:48.426Z</published>
+    <updated>2020-08-12T08:28:48.426Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
